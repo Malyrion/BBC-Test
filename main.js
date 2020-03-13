@@ -98,16 +98,13 @@ var pages = document.getElementById('page');
 
 
 
-var ip = 1;
+var ip = 0;
    function buttonClick() {
-     window.ip=window.ip++;
-     console.log("what should be a "+ip);
-     return window.ip;
-      // document.getElementById('inc').value = ++ip;
-        // console.log("what should be a "+document.getElementById('inc').value);
-         // document.getElementById('page').innerHTML=document.getElementById('inc').value;
-         // return document.getElementById('inc').value;
-   }
+       document.getElementById('inc').value = ++ip;
+         console.log("what should be a "+document.getElementById('inc').value);
+          document.getElementById('page').innerHTML=document.getElementById('inc').value;
+          ip=document.getElementById('inc').value;
+
 
 
 
@@ -119,7 +116,7 @@ console.log(ajaxhttp);
 // var number = pages.innerHTML;
 // console.log("dfkaljdlf;ajldfka   "+number);
 
-var url= "data/article-"+buttonClick()+".json";
+var url= "data/article-"+ip+".json";
 ajaxhttp.open("GET",url,true);
 ajaxhttp.setRequestHeader("content-type","application/json");
 ajaxhttp.onreadystatechange=function() {
@@ -130,10 +127,28 @@ ajaxhttp.onreadystatechange=function() {
 // finding how many types are in jason object
        console.log(Object.keys(jcontent.body).length);
 
-
+removeMyPage();
 displayMyPage();
 
 // find how many types was found ang go throug each one and calll apropriate functions.
+
+function removeMyPage(){
+var k;
+for(k=0; k<10;k++){
+   removeList(k);
+  removeImage(k);
+  removeHeading(k);
+  removeParagraph(k);
+}
+}
+
+
+
+
+
+
+
+
 
 function displayMyPage(){
 var i;
@@ -143,13 +158,16 @@ var i;
       // console.log(i);
       if(jcontent.body[i].type=="heading"){
         console.log("heading was found");
+
           getHeading(i);
       }  if(jcontent.body[i].type=="image"){
           console.log("image was found");
+
           getImage(i);
 
         }  if(jcontent.body[i].type=="paragraph"){
             console.log("paragraph was found");
+            removeParagraph(i)
               getParagraph(i);
           }  if(jcontent.body[i].type=="list"){
               console.log("list was found");
@@ -188,6 +206,41 @@ var k;
   }
 }
 
+
+
+
+
+
+function removeHeading(i){
+  var heading=document.getElementById('heading'+i);
+  heading.innerHTML='';
+}
+
+function removeImage(i){
+  var img=document.getElementById('img'+i);
+  img.src='';
+  img.alt='';
+  img.height='';
+  img.width='';
+}
+
+function removeParagraph(i){
+  var paragraph=document.getElementById('paragraph'+i);
+  paragraph.innerHTML='';
+}
+
+function removeList(i){
+var k;
+  for(k=0; k<10;k++){
+    var list=document.getElementById('l'+i+k);
+    list.innerHTML='';
+    // console.log(k+" "+i)
+  }
+}
+
+
+
+
       //
       // var title=document.getElementById('title');
       // title.innerHTML=jcontent.title;
@@ -223,7 +276,7 @@ ajaxhttp.send(null);
 
 
 
-
+}
 
 
 

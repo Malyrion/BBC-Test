@@ -107,7 +107,7 @@ var ip = 0;
 
 
 
-
+ 
 var ajaxhttp = new XMLHttpRequest();
 console.log(ajaxhttp);
 

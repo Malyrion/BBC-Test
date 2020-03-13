@@ -1,7 +1,26 @@
-*{
-  background: #cccccc;
+.p{
+    text-align:center;
+}
+.imgA1{
+  position: center;
 }
 
+.list{
+  padding-left: 40px;
+}
+.article-section{
+  padding-left:20px;
+}
+
+*{
+  padding: 0;
+  margin:0;
+  text-decoration:none;
+   list-style: none;
+  box-sizing: border-box;
+  /*background: #cccccc;*/
+
+}
 .page-title{
   text-align: center;
   color: #030303;
@@ -21,10 +40,12 @@ h1 {
 
 .article-section{
 width: 80%;
-height: 35rem;
+/* height: 35rem; */
 margin: 5% 0% 5% 10%;
 border: 5px solid #030303;
 background: white;
+
+
 }
 
 .rate-this-article{
@@ -65,9 +86,9 @@ background: white;
   background: #030303;
   border-color:#030303;
   border-top: 10px;
-  margin: 0;
   height: 10%;
   padding: 30px;
+  margin: 0;
 
 
 }
